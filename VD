@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Passé Composé: Voltooid Deelwoord</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #ffffff; font-family: Arial, sans-serif; }
+    .card { border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); padding: 20px; margin-bottom: 25px; }
+    .tip { font-size: 0.95rem; margin-top: 10px; display:none; }
+    .vraag-text { font-weight: 500; font-size: 1.1rem; }
+    .btn-check-answer { margin-top: 10px; width: auto; }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <h1 class="mb-4 text-center">Passé Composé: Voltooid Deelwoord</h1>
+  <p class="text-center mb-5">Kies de juiste vorm van het voltooid deelwoord en klik op de knop voor feedback.</p>
+
+  <!-- Vraag 1 -->
+  <div class="card" id="vraag1">
+    <p class="vraag-text">1. Marie est ___ au marché.</p>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="q1" value="allé" id="q1a">
+      <label class="form-check-label" for="q1a">allé</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="q1" value="allée" id="q1b">
+      <label class="form-check-label" for="q1b">allée</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="q1" value="allés" id="q1c">
+      <label class="form-check-label" for="q1c">allés</label>
+    </div>
+    <button class="btn btn-primary btn-check-answer" type="button" data-question="q1" data-answer="allée" data-correct="Marie est allée au marché." data-feedback="Être wordt gebruikt bij beweging en het voltooid deelwoord past zich aan het onderwerp aan: vrouwelijk enkelvoud → allée.">Controleer antwoord</button>
+    <div class="tip text-success" id="tip-q1"></div>
+  </div>
+
+  <!-- Vraag 2 -->
+  <div class="card" id="vraag2">
+    <p class="vraag-text">2. Les garçons sont ___ tombés.</p>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="q2" value="tombé" id="q2a">
+      <label class="form-check-label" for="q2a">tombé</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="q2" value="tombés" id="q2b">
+      <label class="form-check-label" for="q2b">tombés</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="q2" value="tombées" id="q2c">
+      <label class="form-check-label" for="q2c">tombées</label>
+    </div>
+    <button class="btn btn-primary btn-check-answer" type="button" data-question="q2" data-answer="tombés" data-correct="Les garçons sont tombés." data-feedback="Être wordt gebruikt bij beweging; onderwerp is mannelijk meervoud → tombés.">Controleer antwoord</button>
+    <div class="tip text-success" id="tip-q2"></div>
+  </div>
+
+  <!-- Vraag 3 -->
+  <div class="card" id="vraag3">
+    <p class="vraag-text">3. La lettre que j’ai ___ est sur la table.</p>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="q3" value="écrit" id="q3a">
+      <label class="form-check-label" for="q3a">écrit</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="q3" value="écrite" id="q3b">
+      <label class="form-check-label" for="q3b">écrite</label>
+    </div>
+    <button class="btn btn-primary btn-check-answer" type="button" data-question="q3" data-answer="écrite" data-correct="La lettre que j’ai écrite est sur la table." data-feedback="Avoir + direct object voor het werkwoord → voltooid deelwoord past zich aan: vrouwelijk enkelvoud → écrite.">Controleer antwoord</button>
+    <div class="tip text-success" id="tip-q3"></div>
+  </div>
+
+  <!-- Vraag 4 -->
+  <div class="card" id="vraag4">
+    <p class="vraag-text">4. Les filles sont ___ parties tôt.</p>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="q4" value="parté" id="q4a">
+      <label class="form-check-label" for="q4a">parté</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="q4" value="parties" id="q4b">
+      <label class="form-check-label" for="q4b">parties</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="q4" value="partis" id="q4c">
+      <label class="form-check-label" for="q4c">partis</label>
+    </div>
+    <button class="btn btn-primary btn-check-answer" type="button" data-question="q4" data-answer="parties" data-correct="Les filles sont parties tôt." data-feedback="Être + onderwerp vrouwelijk meervoud → parties.">Controleer antwoord</button>
+    <div class="tip text-success" id="tip-q4"></div>
+  </div>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.btn-check-answer').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const qName = btn.dataset.question;
+      const correctAnswer = btn.dataset.answer;
+      const correctText = btn.dataset.correct;
+      const feedback = btn.dataset.feedback;
+
+      const radios = document.getElementsByName(qName);
+      let selected = null;
+      for (let r of radios) if (r.checked) selected = r.value;
+
+      const tipDiv = document.getElementById('tip-' + qName);
+      if (!selected) {
+        tipDiv.innerHTML = 'Kies eerst een antwoord.';
+        tipDiv.className = 'tip text-danger';
+        tipDiv.style.display = 'block';
+        return;
+      }
+
+      if (selected === correctAnswer) {
+        tipDiv.innerHTML = `<strong>${correctText}</strong><br>${feedback}`;
+        tipDiv.className = 'tip text-success';
+        tipDiv.style.display = 'block';
+      } else {
+        tipDiv.innerHTML = 'Fout. Probeer opnieuw.';
+        tipDiv.className = 'tip text-danger';
+        tipDiv.style.display = 'block';
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
